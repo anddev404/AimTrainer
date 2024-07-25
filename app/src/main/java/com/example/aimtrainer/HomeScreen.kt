@@ -9,6 +9,7 @@ import com.example.aimtrainer.navigation.Screen
 @Composable
 fun HomeScreen(navController: NavController) {
     Button(onClick = {
+        navController.navigate(Screen.GameScreen)
     }) {
         Text(text = "Home Screen")
     }
