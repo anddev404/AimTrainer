@@ -2,5 +2,6 @@
     <string name="app_name">AimTrainer</string>
 
     <string name="best_score">Best Score</string>
+    <string name="play">PLAY</string>
 
 </resources>
