@@ -13,3 +13,12 @@ val Pink40 = Color(0xFF7D5260)
 val BestScoreBorderColor = Color(0xFF6650a4)
 val BestScoreTextColor1 = Color(0xFFE5B3FA)
 val BestScoreTextColor2 = Color(0xFFFFEC52)
+
+val TabTextColorActive = Color(0xFFFFF545)
+val TabTextColorInactive = Color(0xFFFFF9C5)
+val TabBorderColor = Color(0xFF28196A)
+
+val Tab_Bottom_Gradient = Color(0xFF322670)
+val Tab_Top_Gradient = Color(0xFF705DD3)
+val Tab_Bottom_Gradient_Active = Color(0xFF8F5DD0)
+val Tab_Top_Gradient_Active = Color(0xFFB481E0)
