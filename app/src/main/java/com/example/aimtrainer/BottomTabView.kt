@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
@@ -63,7 +64,28 @@ fun BottomTabView() {
                 Modifier.weight(1f)
             }
 
-
+            BottomTabViewItem(
+                modifier,
+                text = stringResource(id = R.string.settings),
+            )
+            BottomTabViewItem(
+                modifier,
+                painter = painterResource(id = R.drawable.icon_play),
+                leftArrow = true,
+                rightArrow = true,
+                isChecked = true,
+                text = stringResource(id = R.string.game)
+            )
+            BottomTabViewItem(
+                modifier,
+                painter = painterResource(id = R.drawable.icon_number),
+                text = stringResource(id = R.string.level)
+            )
+            BottomTabViewItem(
+                modifier,
+                painter = painterResource(id = R.drawable.icon_cup),
+                text = stringResource(id = R.string.rank)
+            )
         }
     }
 }
