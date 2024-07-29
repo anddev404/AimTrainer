@@ -17,7 +17,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AimTrainerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = { BottomTabView() }) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
                         MainNavigation()
                     }
