@@ -3,6 +3,7 @@ package com.example.aimtrainer
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,10 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -40,7 +45,10 @@ import com.example.aimtrainer.ui.theme.Tab_Top_Gradient_Active
 
 @Preview(showBackground = true)
 @Composable
-fun BottomTabView() {
+fun BottomTabView(
+    state: BottomTabEvent = BottomTabEvent.OnGameClick,
+    onEvent: (BottomTabEvent) -> Unit = {}
+) {
     val configuration = LocalConfiguration.current
     val arrangement =
         if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) Arrangement.SpaceAround else Arrangement.Center
@@ -63,29 +71,78 @@ fun BottomTabView() {
             } else {
                 Modifier.weight(1f)
             }
+            var isClicked by remember { mutableStateOf(state) }
+            var leftArrow = false
+            var rightArrow = false
+
+            when (isClicked) {
+                BottomTabEvent.OnGameClick -> {
+                    leftArrow = true
+                    rightArrow = true
+                }
+
+                BottomTabEvent.OnLevelClick -> {
+                    leftArrow = true
+                    rightArrow = true
+                }
+
+                BottomTabEvent.OnRankClick -> {
+                    leftArrow = true
+                    rightArrow = false
+                }
+
+                BottomTabEvent.OnSettingClick -> {
+                    leftArrow = false
+                    rightArrow = true
+                }
+            }
 
             BottomTabViewItem(
                 modifier,
                 text = stringResource(id = R.string.settings),
-            )
+                leftArrow = if (isClicked == BottomTabEvent.OnSettingClick) leftArrow else false,
+                rightArrow = if (isClicked == BottomTabEvent.OnSettingClick) rightArrow else false,
+                isChecked = isClicked == BottomTabEvent.OnSettingClick,
+            ) {
+                isClicked = BottomTabEvent.OnSettingClick
+                onEvent(BottomTabEvent.OnSettingClick)
+            }
+
             BottomTabViewItem(
                 modifier,
                 painter = painterResource(id = R.drawable.icon_play),
-                leftArrow = true,
-                rightArrow = true,
-                isChecked = true,
+                leftArrow = if (isClicked == BottomTabEvent.OnGameClick) leftArrow else false,
+                rightArrow = if (isClicked == BottomTabEvent.OnGameClick) rightArrow else false,
+                isChecked = isClicked == BottomTabEvent.OnGameClick,
                 text = stringResource(id = R.string.game)
-            )
+            ) {
+                isClicked = BottomTabEvent.OnGameClick
+                onEvent(BottomTabEvent.OnGameClick)
+            }
+
             BottomTabViewItem(
                 modifier,
                 painter = painterResource(id = R.drawable.icon_number),
-                text = stringResource(id = R.string.level)
-            )
+                text = stringResource(id = R.string.level),
+                leftArrow = if (isClicked == BottomTabEvent.OnLevelClick) leftArrow else false,
+                rightArrow = if (isClicked == BottomTabEvent.OnLevelClick) rightArrow else false,
+                isChecked = isClicked == BottomTabEvent.OnLevelClick,
+            ) {
+                isClicked = BottomTabEvent.OnLevelClick
+                onEvent(BottomTabEvent.OnLevelClick)
+            }
+
             BottomTabViewItem(
                 modifier,
                 painter = painterResource(id = R.drawable.icon_cup),
-                text = stringResource(id = R.string.rank)
-            )
+                text = stringResource(id = R.string.rank),
+                leftArrow = if (isClicked == BottomTabEvent.OnRankClick) leftArrow else false,
+                rightArrow = if (isClicked == BottomTabEvent.OnRankClick) rightArrow else false,
+                isChecked = isClicked == BottomTabEvent.OnRankClick,
+            ) {
+                isClicked = BottomTabEvent.OnRankClick
+                onEvent(BottomTabEvent.OnRankClick)
+            }
         }
     }
 }
@@ -110,6 +167,7 @@ private fun BottomTabViewItem(
     painter: Painter = painterResource(id = R.drawable.icon_settings),
     leftArrow: Boolean = false,
     rightArrow: Boolean = false,
+    onClick: () -> Unit = {}
 ) {
 
     val offset = if (isChecked) (-20).dp else 0.dp
@@ -118,11 +176,10 @@ private fun BottomTabViewItem(
     val buttonBackground =
         if (isChecked) painterResource(id = R.drawable.tab_button_filed) else painterResource(id = R.drawable.tab_button_empty)
 
-    Box(
-        modifier = modifier
-            .height(IntrinsicSize.Max)
-            .background(Brush.verticalGradient(listOf(topColor, bottomColor)))
-    ) {
+    Box(modifier = modifier
+        .height(IntrinsicSize.Max)
+        .background(Brush.verticalGradient(listOf(topColor, bottomColor)))
+        .clickable { onClick() }) {
         Image(
             modifier = Modifier
                 .align(Alignment.TopStart)
@@ -147,7 +204,8 @@ private fun BottomTabViewItem(
             Modifier
                 .align(Alignment.Center)
                 .height(72.dp)
-                .offset(0.dp, offset), contentAlignment = Alignment.Center
+                .offset(0.dp, offset),
+            contentAlignment = Alignment.Center
         ) {
             Image(
                 modifier = Modifier

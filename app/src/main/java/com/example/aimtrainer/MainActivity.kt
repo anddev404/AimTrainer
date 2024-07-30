@@ -19,7 +19,16 @@ class MainActivity : ComponentActivity() {
             AimTrainerTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    bottomBar = { BottomTabView() }) { innerPadding ->
+                    bottomBar = {
+                        BottomTabView() {
+                            when (it) {
+                                BottomTabEvent.OnGameClick -> TODO()
+                                BottomTabEvent.OnLevelClick -> TODO()
+                                BottomTabEvent.OnRankClick -> TODO()
+                                BottomTabEvent.OnSettingClick -> TODO()
+                            }
+                        }
+                    }) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
                         MainNavigation()
                     }
