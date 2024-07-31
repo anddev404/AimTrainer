@@ -10,4 +10,6 @@ sealed class Screen {
     @Serializable
     data object GameScreen
 
+    @Serializable
+    data object RankScreen
 }

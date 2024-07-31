@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                             when (it) {
                                 BottomTabEvent.OnGameClick -> TODO()
                                 BottomTabEvent.OnLevelClick -> TODO()
-                                BottomTabEvent.OnRankClick -> TODO()
+                                BottomTabEvent.OnRankClick -> navController.navigate(Screen.RankScreen)
                                 BottomTabEvent.OnSettingClick -> TODO()
                             }
                         }

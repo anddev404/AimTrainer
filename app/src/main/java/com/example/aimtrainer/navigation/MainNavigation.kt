@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.aimtrainer.GameScreen
 import com.example.aimtrainer.HomeScreen
+import com.example.aimtrainer.rank.presentation.RankScreen
 
 @Composable
 fun MainNavigation(navController: NavHostController) {
@@ -19,6 +20,9 @@ fun MainNavigation(navController: NavHostController) {
         }
         composable<Screen.GameScreen> {
             GameScreen()
+        }
+        composable<Screen.RankScreen> {
+            RankScreen()
         }
     }
 }
