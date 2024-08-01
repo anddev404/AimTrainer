@@ -8,4 +8,8 @@
     <string name="game">Game</string>
     <string name="level">Level</string>
     <string name="rank">Rank</string>
+
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="all">All</string>
 </resources>
