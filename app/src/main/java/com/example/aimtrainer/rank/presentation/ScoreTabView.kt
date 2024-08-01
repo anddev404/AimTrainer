@@ -1,6 +1,7 @@
 package com.example.aimtrainer.rank.presentation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -42,25 +43,24 @@ fun ScoreTabView(modifier: Modifier = Modifier, size: (IntSize) -> Unit = {}) {
     )
 
     var (leftTabBackground, leftTabTextColor) = Pair(
-        painterResource(id = R.drawable.tab_score_list_left),
-        RankTabTextColorInactive
+        painterResource(id = R.drawable.tab_score_list_left), RankTabTextColorInactive
     )
     var (centralTabBackground, centralTabTextColor) = Pair(
-        painterResource(id = R.drawable.tab_score_list_left),
-        RankTabTextColorInactive
+        painterResource(id = R.drawable.tab_score_list_left), RankTabTextColorInactive
     )
     var (rightTabBackground, rightTabTextColor) = Pair(
-        painterResource(id = R.drawable.tab_score_list_left),
-        RankTabTextColorInactive
+        painterResource(id = R.drawable.tab_score_list_left), RankTabTextColorInactive
     )
 
     Column(modifier = Modifier
         .fillMaxWidth()
         .onGloballyPositioned { size(it.size) }
-        .then(modifier)
-    ) {
+        .then(modifier)) {
         TabRow(
-            selectedTabIndex = selectedTabIndex, indicator = {}
+            selectedTabIndex = selectedTabIndex,
+            indicator = {},
+            divider = {},
+            containerColor = Color.Transparent,
         ) {
             Tab(0, selectedTabIndex, tabs[0], leftTabTextColor, leftTabBackground) {
                 selectedTabIndex = it
@@ -128,9 +128,7 @@ private fun Tab(
                     Font(R.font.font_default)
                 )
             )
-        },
-            selected = selectedIndex == index,
-            onClick = { onClick(index) })
+        }, selected = selectedIndex == index, onClick = { onClick(index) })
     }
 }
 
