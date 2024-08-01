@@ -25,3 +25,6 @@ val Tab_Top_Gradient_Active = Color(0xFFB481E0)
 
 val RankPointsTextColor = Color(0xFF743B2A)
 val RankNickTextColor = Color(0xFF59301E)
+val RankTabTextColorActive = Color(0xFFFFDD3D)
+val RankTabTextColorInactive = Color(0xFFE0B1FF)
+val RankBorderColor = Color(0xFF472178)
