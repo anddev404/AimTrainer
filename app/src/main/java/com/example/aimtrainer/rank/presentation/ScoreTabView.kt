@@ -1,7 +1,6 @@
 package com.example.aimtrainer.rank.presentation
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +24,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.sp
-import com.example.aimtrainer.OutlinedText
+import com.example.aimtrainer.core.presentation.OutlinedText
 import com.example.aimtrainer.R
 import com.example.aimtrainer.ui.theme.RankBorderColor
 import com.example.aimtrainer.ui.theme.RankTabTextColorActive

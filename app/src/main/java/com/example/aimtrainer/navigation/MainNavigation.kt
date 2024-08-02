@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.aimtrainer.GameScreen
-import com.example.aimtrainer.HomeScreen
+import com.example.aimtrainer.game.presentation.GameScreen
+import com.example.aimtrainer.home.presentation.HomeScreen
 import com.example.aimtrainer.rank.presentation.RankScreen
 
 @Composable

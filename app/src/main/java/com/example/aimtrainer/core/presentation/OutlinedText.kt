@@ -1,4 +1,4 @@
-package com.example.aimtrainer
+package com.example.aimtrainer.core.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.LocalTextStyle

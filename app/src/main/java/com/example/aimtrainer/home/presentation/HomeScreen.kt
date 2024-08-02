@@ -1,4 +1,4 @@
-package com.example.aimtrainer
+package com.example.aimtrainer.home.presentation
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.aimtrainer.R
 import com.example.aimtrainer.navigation.Screen
 import com.example.aimtrainer.ui.theme.BestScoreBorderColor
 import com.example.aimtrainer.ui.theme.BestScoreTextColor1

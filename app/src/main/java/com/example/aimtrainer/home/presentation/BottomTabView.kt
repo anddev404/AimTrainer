@@ -1,4 +1,4 @@
-package com.example.aimtrainer
+package com.example.aimtrainer.home.presentation
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
@@ -35,6 +35,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aimtrainer.R
+import com.example.aimtrainer.core.presentation.OutlinedText
 import com.example.aimtrainer.ui.theme.TabBorderColor
 import com.example.aimtrainer.ui.theme.TabTextColorActive
 import com.example.aimtrainer.ui.theme.TabTextColorInactive

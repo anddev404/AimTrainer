@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.aimtrainer.home.presentation.BottomTabEvent
+import com.example.aimtrainer.home.presentation.BottomTabView
 import com.example.aimtrainer.navigation.MainNavigation
 import com.example.aimtrainer.navigation.Screen
 import com.example.aimtrainer.ui.theme.AimTrainerTheme

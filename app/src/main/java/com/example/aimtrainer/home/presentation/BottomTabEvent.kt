@@ -1,4 +1,4 @@
-package com.example.aimtrainer
+package com.example.aimtrainer.home.presentation
 
 sealed class BottomTabEvent {
     data object OnSettingClick : BottomTabEvent()
