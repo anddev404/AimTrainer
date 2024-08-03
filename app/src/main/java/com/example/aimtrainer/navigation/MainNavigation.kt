@@ -19,7 +19,7 @@ fun MainNavigation(navController: NavHostController) {
             HomeScreen(navController = navController)
         }
         composable<Screen.GameScreen> {
-            GameScreen()
+            GameScreen(navController = navController)
         }
         composable<Screen.RankScreen> {
             RankScreen()
