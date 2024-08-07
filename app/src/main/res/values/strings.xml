@@ -13,4 +13,15 @@
     <string name="day">Day</string>
     <string name="week">Week</string>
     <string name="all">All</string>
+
+    <string name="blank_email">The email field cannot be empty.</string>
+    <string name="invalid_email">Please enter a valid email address.</string>
+    <string name="email_already_in_use">This email address is already in use.</string>
+
+    <string name="blank_password">The password field cannot be empty.</string>
+    <string name="too_short_password">The password must be at least 8 characters long.</string>
+    <string name="complexity_error_password">The password must contain at least one uppercase letter, one digit, and one special character.</string>
+    <string name="mismatch_password">The passwords must match.</string>
+    <string name="same_as_old_password">The new password cannot be the same as the previous one.</string>
+
 </resources>
