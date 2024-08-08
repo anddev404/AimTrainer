@@ -12,4 +12,7 @@ sealed class Screen {
 
     @Serializable
     data object RankScreen
+
+    @Serializable
+    data object LoginScreen
 }
