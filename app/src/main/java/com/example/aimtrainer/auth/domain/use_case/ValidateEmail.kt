@@ -1,8 +1,11 @@
 package com.example.aimtrainer.auth.domain.use_case
 
 import android.util.Patterns
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ValidateEmail(private val errorMessages: ErrorMessages) {
+@Singleton
+class ValidateEmail @Inject constructor(private val errorMessages: ErrorMessages) {
 
     fun execute(email: String): ValidationResult {
         if (email.isBlank()) {
