@@ -17,7 +17,9 @@ import com.example.aimtrainer.home.presentation.BottomTabView
 import com.example.aimtrainer.navigation.MainNavigation
 import com.example.aimtrainer.navigation.Screen
 import com.example.aimtrainer.ui.theme.AimTrainerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
                         when (it) {
                             BottomTabEvent.OnGameClick -> navController.navigate(Screen.MainScreen)
                             BottomTabEvent.OnLevelClick -> showAvailableSoonToast(context)
-                            BottomTabEvent.OnRankClick -> navController.navigate(Screen.RankScreen)
+                            BottomTabEvent.OnRankClick -> navController.navigate(Screen.LoginScreen)
                             BottomTabEvent.OnSettingClick -> showAvailableSoonToast(context)
                         }
                     }
