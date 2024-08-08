@@ -1,6 +1,10 @@
 package com.example.aimtrainer.auth.domain.use_case
 
-class ValidatePassword(private val errorMessages: ErrorMessages) {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class ValidatePassword @Inject constructor(private val errorMessages: ErrorMessages) {
 
     fun execute(password: String): ValidationResult {
 
