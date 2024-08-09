@@ -1,3 +1,3 @@
-package com.example.aimtrainer.auth.domain.use_case
+package com.example.aimtrainer.auth.domain.model
 
 data class ValidationResult(val successful: Boolean, val errorMessage: String = "")

@@ -1,4 +1,4 @@
-package com.example.aimtrainer.auth.domain.use_case
+package com.example.aimtrainer.auth.domain.errors
 
 import android.content.res.Resources
 import com.example.aimtrainer.R
