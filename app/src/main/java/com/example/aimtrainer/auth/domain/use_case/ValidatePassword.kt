@@ -1,5 +1,7 @@
 package com.example.aimtrainer.auth.domain.use_case
 
+import com.example.aimtrainer.auth.domain.errors.ErrorMessages
+import com.example.aimtrainer.auth.domain.model.ValidationResult
 import javax.inject.Inject
 import javax.inject.Singleton
 
