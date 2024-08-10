@@ -14,6 +14,7 @@
     <string name="week">Week</string>
     <string name="all">All</string>
 
+    <string name="login">LOGIN</string>
     <string name="blank_email">The email field cannot be empty.</string>
     <string name="invalid_email">Please enter a valid email address.</string>
     <string name="email_already_in_use">This email address is already in use.</string>
