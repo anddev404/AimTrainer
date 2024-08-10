@@ -26,7 +26,7 @@ fun MainNavigation(navController: NavHostController) {
             RankScreen()
         }
         composable<Screen.LoginScreen> {
-            LoginScreen()
+            LoginScreen(navController = navController)
         }
     }
 }

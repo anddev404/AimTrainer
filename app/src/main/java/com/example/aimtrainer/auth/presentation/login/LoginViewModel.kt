@@ -2,43 +2,65 @@ package com.example.aimtrainer.auth.presentation.login
 
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.aimtrainer.auth.domain.repository.AuthRepository
 import com.example.aimtrainer.auth.domain.use_case.ValidateEmail
 import com.example.aimtrainer.auth.domain.use_case.ValidatePassword
 import com.example.aimtrainer.auth.presentation.FormState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val validateEmail: ValidateEmail,
-    private val validatePassword: ValidatePassword
+    private val validatePassword: ValidatePassword,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _login = MutableStateFlow(FormState())
-    val login = _login.asStateFlow()
+    private val _loginForm = MutableStateFlow(FormState())
+    val loginForm = _loginForm.asStateFlow()
 
-    private val _password = MutableStateFlow(FormState())
-    val password = _password.asStateFlow()
+    private val _passwordForm = MutableStateFlow(FormState())
+    val passwordForm = _passwordForm.asStateFlow()
 
-    fun changeLogin(login: TextFieldValue) {
-        _login.value = _login.value.copy(textFieldValue = login)
+    private val _loggedIn = MutableStateFlow(LoggedInState())
+    val loggedIn = _loggedIn.asStateFlow()
+
+    fun updateLoginField(login: TextFieldValue) {
+        _loginForm.value = _loginForm.value.copy(textFieldValue = login)
     }
 
-    fun changePassword(password: TextFieldValue) {
-        _password.value = _password.value.copy(textFieldValue = password)
+    fun updatePasswordField(password: TextFieldValue) {
+        _passwordForm.value = _passwordForm.value.copy(textFieldValue = password)
     }
 
     fun validateAndLogin() {
-        val isValidEmail = validateEmail.execute(_login.value.textFieldValue.text)
-        val isValidPassword = validatePassword.execute(_password.value.textFieldValue.text)
+        val isValidEmail = validateEmail.execute(_loginForm.value.textFieldValue.text)
+        val isValidPassword = validatePassword.execute(_passwordForm.value.textFieldValue.text)
 
-        _login.value = _login.value.copy(validationResult = isValidEmail)
-        _password.value = _password.value.copy(validationResult = isValidPassword)
+        _loginForm.value = _loginForm.value.copy(validationResult = isValidEmail)
+        _passwordForm.value = _passwordForm.value.copy(validationResult = isValidPassword)
 
-        if (_login.value.validationResult?.successful == false || _password.value.validationResult?.successful == false) {
+        if (_loginForm.value.validationResult?.successful == false || _passwordForm.value.validationResult?.successful == false) {
             return
         }
+
+        _loggedIn.value = LoggedInState(true)
+
+        viewModelScope.launch {
+            authRepository.signIn(
+                _loginForm.value.textFieldValue.text,
+                _passwordForm.value.textFieldValue.text
+            ).onSuccess {
+                _loggedIn.value = LoggedInState(false, user = it)
+
+            }.onFailure {
+                _loggedIn.value = LoggedInState(false, error = it.message ?: "unknown error")
+            }
+        }
+
     }
 }
