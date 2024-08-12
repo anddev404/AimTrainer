@@ -5,6 +5,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.tasks.await
 
 class FirebaseDatabaseService {
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -34,5 +35,17 @@ class FirebaseDatabaseService {
                 result(Result.failure(error.toException()))
             }
         })
+    }
+
+    suspend fun insertScore(uid: String, score: BestScore.Score): Boolean {
+        return try {
+
+            val reference = database.getReference("Scores").child(uid)
+            reference.setValue(score).await()
+            true
+
+        } catch (e: Exception) {
+            false
+        }
     }
 }

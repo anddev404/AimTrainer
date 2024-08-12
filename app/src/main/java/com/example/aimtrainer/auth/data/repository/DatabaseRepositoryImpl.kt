@@ -12,4 +12,8 @@ class DatabaseRepositoryImpl(private val firebaseDatabaseService: FirebaseDataba
             result(it)
         }
     }
+
+    override suspend fun insertScore(uid: String, score: BestScore.Score): Boolean {
+        return firebaseDatabaseService.insertScore(uid, score)
+    }
 }
