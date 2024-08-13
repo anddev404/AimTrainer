@@ -1,13 +1,13 @@
 package com.example.aimtrainer.auth.data.remote
 
-import com.example.aimtrainer.auth.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
 class FirebaseAuthService {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    suspend fun sighIn(email: String, password: String): Result<User> {
+    suspend fun sighIn(email: String, password: String): Result<FirebaseUser> {
         try {
 
             auth.signInWithEmailAndPassword(email, password).await()
@@ -26,10 +26,7 @@ class FirebaseAuthService {
         auth.signOut()
     }
 
-    fun getCurrentUser(): User? {
-        auth.currentUser?.let {
-            return@getCurrentUser User(it.uid, it.email ?: "", it.displayName ?: "")
-        }
-        return null
+    fun getCurrentUser(): FirebaseUser? {
+        return auth.currentUser
     }
 }

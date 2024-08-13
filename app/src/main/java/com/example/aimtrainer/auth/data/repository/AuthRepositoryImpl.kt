@@ -1,12 +1,12 @@
 package com.example.aimtrainer.auth.data.repository
 
 import com.example.aimtrainer.auth.data.remote.FirebaseAuthService
-import com.example.aimtrainer.auth.domain.model.User
 import com.example.aimtrainer.auth.domain.repository.AuthRepository
+import com.google.firebase.auth.FirebaseUser
 
 class AuthRepositoryImpl(private val firebaseAuthService: FirebaseAuthService) : AuthRepository {
-    
-    override suspend fun signIn(email: String, password: String): Result<User> {
+
+    override suspend fun signIn(email: String, password: String): Result<FirebaseUser> {
         return firebaseAuthService.sighIn(email, password)
     }
 
@@ -14,7 +14,7 @@ class AuthRepositoryImpl(private val firebaseAuthService: FirebaseAuthService) :
         firebaseAuthService.signOut()
     }
 
-    override fun getCurrentUser(): User? {
+    override fun getCurrentUser(): FirebaseUser? {
         return firebaseAuthService.getCurrentUser()
     }
 }
