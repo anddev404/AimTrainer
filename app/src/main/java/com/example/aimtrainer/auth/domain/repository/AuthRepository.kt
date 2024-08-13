@@ -9,4 +9,8 @@ interface AuthRepository {
     fun signOut()
 
     fun getCurrentUser(): FirebaseUser?
+
+    suspend fun signUp(email: String, password: String, nick: String): Result<FirebaseUser>
+
+    suspend fun addNickName(user: FirebaseUser, nickname: String)
 }
