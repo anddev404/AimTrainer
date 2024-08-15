@@ -28,3 +28,5 @@ val RankNickTextColor = Color(0xFF59301E)
 val RankTabTextColorActive = Color(0xFFFFDD3D)
 val RankTabTextColorInactive = Color(0xFFE0B1FF)
 val RankBorderColor = Color(0xFF472178)
+
+val TextBorderColor = Color(0xFF0B8113)
