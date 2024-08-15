@@ -21,7 +21,7 @@ import com.example.aimtrainer.ui.theme.TextBorderColor
 
 @Preview(showBackground = true)
 @Composable
-private fun GreenButton(text: String = "Button", onClick: () -> Unit = {}) {
+fun GreenButton(text: String = "Button", onClick: () -> Unit = {}) {
     Button(
         onClick = { onClick() },
         colors = ButtonDefaults.buttonColors(containerColor = Color.Unspecified),
