@@ -26,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.aimtrainer.R
 import com.example.aimtrainer.auth.domain.model.ValidationResult
+import com.example.aimtrainer.core.presentation.GreenButton
 import com.example.aimtrainer.navigation.Screen
 
 @Composable
@@ -85,9 +86,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Button(onClick = { viewModel.validateAndLogin() }) {
-                Text(text = stringResource(id = R.string.login))
-            }
+            GreenButton(stringResource(id = R.string.login)) { viewModel.validateAndLogin() }
         }
     }
 }
