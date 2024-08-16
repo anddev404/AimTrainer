@@ -27,6 +27,7 @@ import androidx.navigation.NavController
 import com.example.aimtrainer.R
 import com.example.aimtrainer.auth.domain.model.ValidationResult
 import com.example.aimtrainer.core.presentation.GreenButton
+import com.example.aimtrainer.core.presentation.StyledTextField
 import com.example.aimtrainer.navigation.Screen
 
 @Composable
@@ -61,7 +62,7 @@ fun LoginScreen(
         } else {
             Spacer(modifier = Modifier.height(24.dp))
 
-            TextField(
+            StyledTextField(
                 value = loginState.textFieldValue,
                 onValueChange = { viewModel.updateLoginField(it) },
                 isError = isError(loginState.validationResult),
@@ -73,7 +74,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            TextField(
+            StyledTextField(
                 value = passwordState.textFieldValue,
                 onValueChange = { viewModel.updatePasswordField(it) },
                 isError = isError(passwordState.validationResult),
