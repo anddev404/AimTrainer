@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aimtrainer.R
-import com.example.aimtrainer.ui.theme.TextBorderColor
+import com.example.aimtrainer.ui.theme.DialogBoxTextBorderColor
 
 @Preview(showBackground = true)
 @Composable
@@ -38,7 +38,7 @@ fun GreenButton(text: String = "Button", onClick: () -> Unit = {}) {
             OutlinedText(
                 text = text,
                 fontSize = 28.sp,
-                borderColor = TextBorderColor,
+                borderColor = DialogBoxTextBorderColor,
                 borderWidth = 8f,
                 fontFamily = FontFamily(
                     Font(R.font.font_default)
