@@ -25,4 +25,8 @@
     <string name="mismatch_password">The passwords must match.</string>
     <string name="same_as_old_password">The new password cannot be the same as the previous one.</string>
 
+    <string name="sign_in">Sign in</string>
+    <string name="enter_nickname">Enter your nickname</string>
+    <string name="enter_email">Enter your email address</string>
+    <string name="enter_password">Enter your password</string>
 </resources>
