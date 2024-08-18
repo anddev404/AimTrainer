@@ -17,6 +17,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aimtrainer.ui.theme.DialogBoxMainTextColor
 import com.example.aimtrainer.ui.theme.TextFieldContainerColor
 
 @Composable
@@ -46,7 +47,9 @@ fun StyledTextField(
             disabledIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             focusedTextColor = Color.White,
-            unfocusedTextColor = Color.White,
+            unfocusedTextColor = Color.Gray,
+            errorTextColor = Color.White,
+            errorSupportingTextColor = DialogBoxMainTextColor
         ),
     )
 }
