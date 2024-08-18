@@ -87,7 +87,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            GreenButton(stringResource(id = R.string.login)) { viewModel.validateAndLogin() }
+            GreenButton(stringResource(id = R.string.sign_in)) { viewModel.validateAndLogin() }
         }
     }
 }
