@@ -25,6 +25,7 @@
     <string name="same_as_old_password">The new password cannot be the same as the previous one.</string>
 
     <string name="sign_in">Sign in</string>
+    <string name="login_or_sign_up">Login or sign up</string>
     <string name="sign_in_facebook">Sign in with Facebook</string>
     <string name="sign_in_google">Sign in with Google</string>
     <string name="enter_nickname">Enter your nickname</string>
