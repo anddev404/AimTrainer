@@ -26,8 +26,8 @@
 
     <string name="sign_in">Sign in</string>
     <string name="login_or_sign_up">Login or sign up</string>
-    <string name="sign_in_facebook">Sign in with Facebook</string>
-    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_in_facebook">Continue with Facebook</string>
+    <string name="sign_in_google">Continue with Google</string>
     <string name="enter_nickname">Enter your nickname</string>
     <string name="enter_email">Enter your email address</string>
     <string name="enter_password">Enter your password</string>
