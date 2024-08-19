@@ -25,12 +25,13 @@ import com.example.aimtrainer.ui.theme.DialogBoxTextBorderColor
 
 @Preview(showBackground = true)
 @Composable
-fun GreenButton(
+fun NinePatchButton(
     text: String = "Button", fontSize: TextUnit = 28.sp,
-    painter: Painter? = null, onClick: () -> Unit = {}
+    backgroundNinePatch: Int = R.drawable.button_green,
+    icon: Painter? = null, onClick: () -> Unit = {}
 ) {
     Box(
-        Modifier.draw9Patch(LocalContext.current, R.drawable.button_green),
+        Modifier.draw9Patch(LocalContext.current, backgroundNinePatch),
         contentAlignment = Alignment.Center,
     ) {
 
@@ -41,10 +42,10 @@ fun GreenButton(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                painter?.let {
+                icon?.let {
                     Icon(
                         modifier = Modifier.size(24.dp, 24.dp),
-                        painter = painter,
+                        painter = icon,
                         contentDescription = "",
                         tint = Color.Unspecified
                     )

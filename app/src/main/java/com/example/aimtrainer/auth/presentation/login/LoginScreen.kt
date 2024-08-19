@@ -34,7 +34,7 @@ import androidx.navigation.NavController
 import com.example.aimtrainer.R
 import com.example.aimtrainer.auth.domain.model.ValidationResult
 import com.example.aimtrainer.core.presentation.DoubleGradientBox
-import com.example.aimtrainer.core.presentation.GreenButton
+import com.example.aimtrainer.core.presentation.NinePatchButton
 import com.example.aimtrainer.core.presentation.OutlinedText
 import com.example.aimtrainer.core.presentation.StyledTextField
 import com.example.aimtrainer.navigation.Screen
@@ -137,23 +137,25 @@ fun LoginScreen(
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
-                    GreenButton(stringResource(id = R.string.sign_in)) { viewModel.validateAndLogin() }
+                    NinePatchButton(stringResource(id = R.string.sign_in)) { viewModel.validateAndLogin() }
                 }
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Spacer(modifier = Modifier.height(48.dp))
-                    GreenButton(
+                    NinePatchButton(
                         stringResource(id = R.string.sign_in_google),
                         fontSize = 20.sp,
-                        painter = painterResource(id = R.drawable.icon_google)
+                        backgroundNinePatch = R.drawable.button_blue,
+                        icon = painterResource(id = R.drawable.icon_google)
                     ) { }
                     Spacer(modifier = Modifier.height(24.dp))
-                    GreenButton(
+                    NinePatchButton(
                         stringResource(id = R.string.sign_in_facebook),
                         fontSize = 20.sp,
-                        painter = painterResource(id = R.drawable.icon_fb)
+                        backgroundNinePatch = R.drawable.button_blue,
+                        icon = painterResource(id = R.drawable.icon_fb)
                     ) { }
                     Spacer(modifier = Modifier.height(8.dp))
                 }
