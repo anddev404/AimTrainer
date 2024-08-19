@@ -141,6 +141,12 @@ fun LoginScreen(
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
+                    Text(
+                        modifier = Modifier.align(Alignment.End),
+                        text = stringResource(id = R.string.forgot_password),
+                        color = DialogBoxMainTextColor
+                    )
+
                     NinePatchButton(stringResource(id = R.string.sign_in)) { viewModel.validateAndLogin() }
                 }
 
