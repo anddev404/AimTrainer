@@ -4,15 +4,18 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +23,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -99,7 +103,7 @@ fun LoginScreen(
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         text = stringResource(id = R.string.enter_email),
                         color = DialogBoxTextColor,
@@ -144,20 +148,26 @@ fun LoginScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Spacer(modifier = Modifier.height(48.dp))
-                    NinePatchButton(
-                        stringResource(id = R.string.sign_in_google),
-                        fontSize = 20.sp,
-                        backgroundNinePatch = R.drawable.button_blue,
-                        icon = painterResource(id = R.drawable.icon_google)
-                    ) { }
-                    Spacer(modifier = Modifier.height(24.dp))
-                    NinePatchButton(
-                        stringResource(id = R.string.sign_in_facebook),
-                        fontSize = 20.sp,
-                        backgroundNinePatch = R.drawable.button_blue,
-                        icon = painterResource(id = R.drawable.icon_fb)
-                    ) { }
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Row {
+                        Icon(
+                            painter = painterResource(id = R.drawable.icon_google),
+                            contentDescription = "",
+                            tint = Color.Unspecified
+                        )
+
+                        Spacer(modifier = Modifier.width(24.dp))
+                        Icon(
+                            painter = painterResource(id = R.drawable.icon_fb),
+                            contentDescription = "",
+                            tint = Color.Unspecified
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Text(
+                        text = stringResource(id = R.string.create_account),
+                        color = DialogBoxMainTextColor
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
         })
