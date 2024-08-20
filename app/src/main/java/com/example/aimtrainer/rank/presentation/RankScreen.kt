@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,16 +17,18 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.aimtrainer.R
-import com.example.aimtrainer.rank.domain.Score
 
 @Composable
-fun RankScreen() {
+fun RankScreen(viewModel: RankViewModel = hiltViewModel()) {
     Column {
         var boxSize by remember { mutableStateOf(IntSize.Zero) }
         val boxWidth = with(LocalDensity.current) { boxSize.width.toDp() }
         val boxHeight = with(LocalDensity.current) { boxSize.height.toDp() }
-        
+
+        val bestScores by viewModel.bestScores.collectAsState()
+
         Box(
         ) {
             Image(
@@ -43,7 +46,7 @@ fun RankScreen() {
         }
 
         ScoreListView(
-            scoreList = Score.getFakeScore()
+            scoreList = bestScores
         )
     }
 }
