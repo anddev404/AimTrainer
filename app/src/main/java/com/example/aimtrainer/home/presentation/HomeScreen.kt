@@ -3,6 +3,8 @@ package com.example.aimtrainer.home.presentation
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +21,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -160,15 +164,21 @@ private fun ScoreView() {
 
 @Composable
 private fun PlayButton(onClick: () -> Unit) {
+    var selected = remember { MutableInteractionSource() }
+    val isPressed by selected.collectIsPressedAsState()
+    var width = if (isPressed) 230.dp else 200.dp
+
     Button(
         onClick = { onClick() },
         colors = ButtonDefaults.buttonColors(containerColor = Color.Unspecified),
+        interactionSource = selected,
     ) {
         Box(
+            modifier = Modifier.height(100.dp),
             contentAlignment = Alignment.Center,
         ) {
             Image(
-                modifier = Modifier.widthIn(200.dp),
+                modifier = Modifier.widthIn(width),
                 contentScale = ContentScale.FillWidth,
                 painter = painterResource(id = R.drawable.button_play),
                 contentDescription = "",
