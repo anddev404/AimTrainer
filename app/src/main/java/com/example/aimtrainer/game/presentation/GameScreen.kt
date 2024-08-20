@@ -1,13 +1,14 @@
 package com.example.aimtrainer.game.presentation
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.aimtrainer.R
+import com.example.aimtrainer.core.presentation.TwoButtonsDialog
 import com.example.aimtrainer.navigation.Screen
 
 @Composable
@@ -27,26 +28,27 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel = viewMode
         }
 
         is GameState.Ended -> {
-            Column() {
-                Text(text = "You score: ...")
-                Button(onClick = { viewModel.startGame() }) {
-                    Text(text = "Retry")
-                }
-                Button(onClick = { navController.navigate(Screen.MainScreen) }) {
-                    Text(text = "Home")
-                }
+            Box() {
+                Board()
+
+                TwoButtonsDialog("${stringResource(id = R.string.you_score)} ${viewModel.getScore()}",
+                    leftText = stringResource(id = R.string.try_again),
+                    rightText = stringResource(id = R.string.home),
+                    { viewModel.startGame() },
+                    { navController.navigate(Screen.MainScreen) })
             }
         }
 
         is GameState.Lost -> {
-            Column() {
-                Text(text = "You lose: ...")
-                Button(onClick = { viewModel.startGame() }) {
-                    Text(text = "Try again")
-                }
-                Button(onClick = { navController.navigate(Screen.MainScreen) }) {
-                    Text(text = "Home")
-                }
+            Box {
+                Board()
+
+                TwoButtonsDialog(
+                    stringResource(id = R.string.you_lose),
+                    leftText = stringResource(id = R.string.try_again),
+                    rightText = stringResource(id = R.string.home),
+                    { viewModel.startGame() },
+                    { navController.navigate(Screen.MainScreen) })
             }
         }
     }
