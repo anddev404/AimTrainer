@@ -151,7 +151,7 @@ fun LoginScreen(
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
-                    NinePatchButton(stringResource(id = R.string.sign_in)) { viewModel.validateAndLogin() }
+                    NinePatchButton(text = stringResource(id = R.string.sign_in)) { viewModel.validateAndLogin() }
                 }
 
                 Column(
