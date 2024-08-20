@@ -49,9 +49,9 @@ fun NinePatchButton(
                         contentDescription = "",
                         tint = Color.Unspecified
                     )
+                    Spacer(modifier = Modifier.width(8.dp))
                 }
-
-                Spacer(modifier = Modifier.width(8.dp))
+                
                 OutlinedText(
                     text = text,
                     fontSize = fontSize,
