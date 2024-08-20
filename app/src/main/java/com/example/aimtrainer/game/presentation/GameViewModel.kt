@@ -8,6 +8,7 @@ class GameViewModel : ViewModel() {
 
     private var startTime = 0L
     private var endTime = 0L
+    private var lastScore = 0L
 
     private val _state = MutableStateFlow<GameState>(GameState.Loading)
     val state = _state.asStateFlow()
@@ -26,10 +27,15 @@ class GameViewModel : ViewModel() {
 
     fun setEndTime() {
         endTime = System.currentTimeMillis()
+        lastScore = endTime - startTime
         _state.value = GameState.Ended
     }
 
     fun loseGame() {
         _state.value = GameState.Lost
+    }
+
+    fun getScore(): Long {
+        return lastScore
     }
 }
