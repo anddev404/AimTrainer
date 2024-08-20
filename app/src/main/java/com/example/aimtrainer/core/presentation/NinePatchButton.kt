@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -26,7 +27,8 @@ import com.example.aimtrainer.ui.theme.DialogBoxTextBorderColor
 @Preview(showBackground = true)
 @Composable
 fun NinePatchButton(
-    text: String = "Button", fontSize: TextUnit = 28.sp,
+    modifier: Modifier = Modifier,
+    text: String = "But", fontSize: TextUnit = 28.sp,
     backgroundNinePatch: Int = R.drawable.button_green,
     icon: Painter? = null, onClick: () -> Unit = {}
 ) {
@@ -36,6 +38,7 @@ fun NinePatchButton(
     ) {
 
         Button(
+            modifier = modifier,
             onClick = { onClick() },
             colors = ButtonDefaults.buttonColors(containerColor = Color.Unspecified),
         ) {
@@ -51,7 +54,7 @@ fun NinePatchButton(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                 }
-                
+
                 OutlinedText(
                     text = text,
                     fontSize = fontSize,
