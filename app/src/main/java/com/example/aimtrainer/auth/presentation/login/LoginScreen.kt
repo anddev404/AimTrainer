@@ -67,39 +67,43 @@ fun LoginScreen(
         }
     }
 
-    if (loggedInState.loggingInProgress) {
-        Box(contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
+
+
+    DoubleGradientBox(topContent = {
+        Column(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            OutlinedText(
+                text = stringResource(id = R.string.login_or_sign_up),
+                textColor = DialogBoxMainTextColor,
+                borderColor = TabBorderColor,
+                fontSize = 32.sp,
+                fontFamily = FontFamily(Font(R.font.font_default))
+            )
         }
-    } else {
+    }, bottomContent = {
+        val scrollState = rememberScrollState()
 
-        DoubleGradientBox(topContent = {
-            Column(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                OutlinedText(
-                    text = stringResource(id = R.string.login_or_sign_up),
-                    textColor = DialogBoxMainTextColor,
-                    borderColor = TabBorderColor,
-                    fontSize = 32.sp,
-                    fontFamily = FontFamily(Font(R.font.font_default))
-                )
-            }
-        }, bottomContent = {
-            val scrollState = rememberScrollState()
-
-            Column(
-                modifier = modifier
-                    .fillMaxSize()
-                    .verticalScroll(scrollState),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            if (loggedInState.loggingInProgress) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(color = DialogBoxMainTextColor)
+                }
+            } else {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
@@ -176,8 +180,8 @@ fun LoginScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                 }
             }
-        })
-    }
+        }
+    })
 }
 
 
