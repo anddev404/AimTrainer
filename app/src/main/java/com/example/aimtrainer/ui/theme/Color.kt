@@ -36,3 +36,5 @@ val DialogBoxGradientBottom = Color(0xFF3B0783)
 val DialogBoxGradientCentral = Color(0xFF5F21AA)
 val DialogBoxMainTextColor = Color(0xFFFEEB8F)
 val DialogBoxTextColor = Color(0xFFCEA2FB)
+
+val TintColor = Color(0xFFE4D1FF)
