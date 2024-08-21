@@ -174,13 +174,13 @@ private fun MainBox(content: @Composable () -> Unit = {}) {
 }
 
 private fun calculateWidthInDp(height: Int, width: Int, density: Density): Dp {
-    val height = with(density) {
+    val heightDp = with(density) {
         height.toDp()
     }
-    val width = with(density) {
+    val widthDp = with(density) {
         width.toDp()
     }
-    return if (height > width) width else height
+    return if (heightDp > widthDp) widthDp else heightDp
 }
 
 @Preview(showBackground = true, device = "spec:width=600dp,height=300dp")
