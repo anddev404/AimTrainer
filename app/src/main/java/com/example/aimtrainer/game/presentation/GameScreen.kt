@@ -102,12 +102,8 @@ private fun MainBox(content: @Composable () -> Unit = {}) {
         Modifier
             .fillMaxSize()
     ) {
-        Image(
-            modifier = Modifier.fillMaxSize(),
-            painter = painterResource(id = R.drawable.background_game),
-            contentDescription = "",
-            contentScale = ContentScale.Crop
-        )
+        Background()
+
         var columnSize by remember { mutableStateOf(IntSize.Zero) }
 
         Column(
@@ -170,6 +166,35 @@ private fun MainBox(content: @Composable () -> Unit = {}) {
                 content()
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Background() {
+    Box {
+        Image(
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            painter = painterResource(id = R.drawable.background_game),
+            contentDescription = "",
+        )
+        Image(
+            modifier = Modifier
+                .fillMaxHeight(0.15f)
+                .align(Alignment.BottomStart),
+            contentScale = ContentScale.FillHeight,
+            painter = painterResource(id = R.drawable.image_leaves_bottom_left),
+            contentDescription = "",
+        )
+        Image(
+            modifier = Modifier
+                .fillMaxHeight(0.15f)
+                .align(Alignment.BottomEnd),
+            contentScale = ContentScale.FillHeight,
+            painter = painterResource(id = R.drawable.img_leaves_bottom_right),
+            contentDescription = "",
+        )
     }
 }
 
