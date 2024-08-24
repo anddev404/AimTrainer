@@ -20,10 +20,11 @@ class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _loginForm = MutableStateFlow(FormState())
+    private val _loginForm =
+        MutableStateFlow(FormState(textFieldValue = TextFieldValue("test@test.test")))
     val loginForm = _loginForm.asStateFlow()
 
-    private val _passwordForm = MutableStateFlow(FormState())
+    private val _passwordForm = MutableStateFlow(FormState(textFieldValue = TextFieldValue("Test1234.")))
     val passwordForm = _passwordForm.asStateFlow()
 
     private val _loggedIn = MutableStateFlow(LoggedInState())
