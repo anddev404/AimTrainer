@@ -139,7 +139,7 @@ private fun MainBox(content: @Composable () -> Unit = {}) {
                     Spacer(modifier = Modifier.width(8.dp))
                     OutlinedText(
                         modifier = Modifier
-                            .align(Alignment.CenterVertically), text = "123", textColor = TintColor,
+                            .align(Alignment.CenterVertically), text = "-", textColor = TintColor,
                         fontSize = 24.sp,
                         fontFamily = FontFamily(Font(R.font.font_default))
                     )
