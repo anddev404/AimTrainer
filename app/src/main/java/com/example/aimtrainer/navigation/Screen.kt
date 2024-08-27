@@ -15,4 +15,7 @@ sealed class Screen {
 
     @Serializable
     data object LoginScreen
+
+    @Serializable
+    data object SettingsScreen
 }

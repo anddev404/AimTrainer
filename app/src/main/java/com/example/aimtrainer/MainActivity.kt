@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                             BottomTabEvent.OnGameClick -> navController.navigate(Screen.MainScreen)
                             BottomTabEvent.OnLevelClick -> showAvailableSoonToast(context)
                             BottomTabEvent.OnRankClick -> navController.navigate(Screen.LoginScreen)
-                            BottomTabEvent.OnSettingClick -> showAvailableSoonToast(context)
+                            BottomTabEvent.OnSettingClick -> navController.navigate(Screen.SettingsScreen)
                         }
                     }
                 }) { innerPadding ->

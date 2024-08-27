@@ -8,6 +8,7 @@ import com.example.aimtrainer.auth.presentation.login.LoginScreen
 import com.example.aimtrainer.game.presentation.GameScreen
 import com.example.aimtrainer.home.presentation.HomeScreen
 import com.example.aimtrainer.rank.presentation.RankScreen
+import com.example.aimtrainer.settings.presentation.SettingsScreen
 
 @Composable
 fun MainNavigation(navController: NavHostController) {
@@ -27,6 +28,9 @@ fun MainNavigation(navController: NavHostController) {
         }
         composable<Screen.LoginScreen> {
             LoginScreen(navController = navController)
+        }
+        composable<Screen.SettingsScreen> {
+            SettingsScreen()
         }
     }
 }
