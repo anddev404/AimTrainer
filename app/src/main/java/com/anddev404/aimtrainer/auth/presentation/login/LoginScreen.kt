@@ -1,6 +1,8 @@
 package com.anddev404.aimtrainer.auth.presentation.login
 
+import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -145,7 +147,9 @@ fun LoginScreen(
                     )
 
                     Text(
-                        modifier = Modifier.align(Alignment.End),
+                        modifier = Modifier
+                            .align(Alignment.End)
+                            .clickable { showNotAvailableYetToast(context) },
                         text = stringResource(id = R.string.forgot_password),
                         color = DialogBoxMainTextColor
                     )
@@ -160,6 +164,7 @@ fun LoginScreen(
                     Spacer(modifier = Modifier.height(48.dp))
                     Row {
                         Icon(
+                            modifier = Modifier.clickable { showNotAvailableYetToast(context) },
                             painter = painterResource(id = R.drawable.icon_google),
                             contentDescription = "",
                             tint = Color.Unspecified
@@ -167,6 +172,7 @@ fun LoginScreen(
 
                         Spacer(modifier = Modifier.width(24.dp))
                         Icon(
+                            modifier = Modifier.clickable { showNotAvailableYetToast(context) },
                             painter = painterResource(id = R.drawable.icon_fb),
                             contentDescription = "",
                             tint = Color.Unspecified
@@ -174,6 +180,7 @@ fun LoginScreen(
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
+                        modifier = Modifier.clickable { showNotAvailableYetToast(context) },
                         text = stringResource(id = R.string.create_account),
                         color = DialogBoxMainTextColor
                     )
@@ -192,4 +199,8 @@ private fun isError(validationResult: ValidationResult?): Boolean {
 @Composable
 private fun ShowErrorMessage(validationResult: ValidationResult?) {
     if ((validationResult?.successful == false)) Text(validationResult.errorMessage)
+}
+
+private fun showNotAvailableYetToast(context: Context) {
+    Toast.makeText(context, "Not available yet!", Toast.LENGTH_SHORT).show();
 }

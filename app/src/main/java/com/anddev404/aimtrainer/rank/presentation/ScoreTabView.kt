@@ -1,5 +1,7 @@
 package com.anddev404.aimtrainer.rank.presentation
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -34,6 +37,7 @@ import com.anddev404.aimtrainer.ui.theme.RankTabTextColorInactive
 fun ScoreTabView(modifier: Modifier = Modifier, size: (IntSize) -> Unit = {}) {
 
     var selectedTabIndex by remember { mutableIntStateOf(0) }
+    val context = LocalContext.current
 
     val tabs = listOf(
         stringResource(id = R.string.day),
@@ -90,11 +94,13 @@ fun ScoreTabView(modifier: Modifier = Modifier, size: (IntSize) -> Unit = {}) {
                 centralTabBackground =
                     painterResource(id = R.drawable.tab_score_list_central_clicked)
                 centralTabTextColor = RankTabTextColorActive
+                showNotAvailableYetToast(context)
             }
 
             2 -> {
                 rightTabBackground = painterResource(id = R.drawable.tab_score_list_right_clicked)
                 rightTabTextColor = RankTabTextColorActive
+                showNotAvailableYetToast(context)
             }
         }
     }
@@ -135,4 +141,8 @@ private fun Tab(
 @Composable
 fun ScoreTebViewPreview() {
     ScoreTabView()
+}
+
+private fun showNotAvailableYetToast(context: Context) {
+    Toast.makeText(context, "Not available yet!", Toast.LENGTH_SHORT).show();
 }

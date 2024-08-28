@@ -1,6 +1,9 @@
 package com.anddev404.aimtrainer.game.presentation
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +28,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -98,6 +102,8 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel = viewMode
 
 @Composable
 private fun MainBox(content: @Composable () -> Unit = {}) {
+    val context = LocalContext.current
+
     Box(
         Modifier
             .fillMaxSize()
@@ -118,7 +124,9 @@ private fun MainBox(content: @Composable () -> Unit = {}) {
                     .height(48.dp)
             ) {
                 Image(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable { showNotAvailableYetToast(context) },
                     painter = painterResource(id = R.drawable.top_bar_game),
                     contentDescription = "",
                     contentScale = ContentScale.FillHeight
@@ -222,4 +230,8 @@ private fun MainBoxPreviewPortraint() {
     MainBox {
         Board()
     }
+}
+
+private fun showNotAvailableYetToast(context: Context) {
+    Toast.makeText(context, "Not available yet!", Toast.LENGTH_SHORT).show();
 }
