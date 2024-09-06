@@ -31,7 +31,7 @@ fun MainNavigation(navController: NavHostController) {
             LoginScreen(navController = navController)
         }
         composable<Screen.RegistrationScreen> {
-            RegistrationScreen(navController)
+            RegistrationScreen(navController = navController)
         }
         composable<Screen.SettingsScreen> {
             SettingsScreen()

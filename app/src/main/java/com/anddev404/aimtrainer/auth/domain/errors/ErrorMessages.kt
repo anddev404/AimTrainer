@@ -9,4 +9,7 @@ interface ErrorMessages {
     val passwordComplexityError: String
     val passwordMismatch: String
     val passwordSameAsOld: String
+    val nickBlank: String
+    val nickTooShort: String
+    val nickTooLong: String
 }

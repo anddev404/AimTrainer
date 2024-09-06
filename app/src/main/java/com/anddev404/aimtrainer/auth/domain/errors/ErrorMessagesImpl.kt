@@ -27,4 +27,13 @@ class ErrorMessagesImpl(private val resources: Resources) : ErrorMessages {
 
     override val passwordSameAsOld: String
         get() = resources.getString(R.string.same_as_old_password)
+
+    override val nickBlank: String
+        get() = resources.getString(R.string.blank_nick)
+
+    override val nickTooShort: String
+        get() = resources.getString(R.string.too_short_nick)
+
+    override val nickTooLong: String
+        get() = resources.getString(R.string.too_long_nick)
 }

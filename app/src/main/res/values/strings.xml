@@ -24,8 +24,13 @@
     <string name="mismatch_password">The passwords must match.</string>
     <string name="same_as_old_password">The new password cannot be the same as the previous one.</string>
 
+    <string name="blank_nick">The nick field cannot be empty.</string>
+    <string name="too_short_nick">The nick must be at least 4 characters long.</string>
+    <string name="too_long_nick">The nick must be no longer than 16 characters.</string>
+
     <string name="sign_in">Sign in</string>
     <string name="login_or_sign_up">Login or sign up</string>
+    <string name="sign_up">Sign up</string>
     <string name="sign_in_facebook">Continue with Facebook</string>
     <string name="sign_in_google">Continue with Google</string>
     <string name="enter_nickname">Enter your nickname</string>
