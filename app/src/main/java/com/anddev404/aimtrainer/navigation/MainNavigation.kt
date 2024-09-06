@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.anddev404.aimtrainer.auth.presentation.login.LoginScreen
+import com.anddev404.aimtrainer.auth.presentation.registration.presentation.RegistrationScreen
 import com.anddev404.aimtrainer.game.presentation.GameScreen
 import com.anddev404.aimtrainer.home.presentation.HomeScreen
 import com.anddev404.aimtrainer.rank.presentation.RankScreen
@@ -28,6 +29,9 @@ fun MainNavigation(navController: NavHostController) {
         }
         composable<Screen.LoginScreen> {
             LoginScreen(navController = navController)
+        }
+        composable<Screen.RegistrationScreen> {
+            RegistrationScreen()
         }
         composable<Screen.SettingsScreen> {
             SettingsScreen()

@@ -180,7 +180,7 @@ fun LoginScreen(
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        modifier = Modifier.clickable { showNotAvailableYetToast(context) },
+                        modifier = Modifier.clickable { navController.navigate(Screen.RegistrationScreen) },
                         text = stringResource(id = R.string.create_account),
                         color = DialogBoxMainTextColor
                     )
