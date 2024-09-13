@@ -1,6 +1,8 @@
 package com.anddev404.aimtrainer.di
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import com.anddev404.aimtrainer.auth.data.remote.FirebaseAuthService
 import com.anddev404.aimtrainer.auth.data.remote.FirebaseDatabaseService
 import com.anddev404.aimtrainer.auth.data.repository.AuthRepositoryImpl
@@ -9,6 +11,8 @@ import com.anddev404.aimtrainer.auth.domain.errors.ErrorMessages
 import com.anddev404.aimtrainer.auth.domain.errors.ErrorMessagesImpl
 import com.anddev404.aimtrainer.auth.domain.repository.AuthRepository
 import com.anddev404.aimtrainer.auth.domain.repository.DatabaseRepository
+import com.anddev404.aimtrainer.core.presentation.data.repository.SharedPreferencesRepositoryImpl
+import com.anddev404.aimtrainer.core.presentation.domain.repository.SharedPreferenceRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,5 +51,17 @@ class AppModule {
     @Singleton
     fun provideDatabaseRepository(firebaseDatabaseService: FirebaseDatabaseService): DatabaseRepository {
         return DatabaseRepositoryImpl(firebaseDatabaseService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDefaultSharedPreferences(app: Application): SharedPreferences {
+        return app.getSharedPreferences("default_prefs", Context.MODE_PRIVATE)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferencesRepository(sharedPreferences: SharedPreferences): SharedPreferenceRepository {
+        return SharedPreferencesRepositoryImpl(sharedPreferences)
     }
 }
